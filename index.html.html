@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eai?</title>
     <style>
-        /* Estilos Gerais */
         body {
             display: grid;
             place-items: center;
@@ -26,7 +25,6 @@
             color: #333;
         }
 
-        /* --- ESTILOS PARA DESKTOP --- */
         .buttons {
             position: relative;
             width: 400px;
@@ -66,7 +64,6 @@
             z-index: 2;
         }
 
-        /* Estilos dos GIFs que aparecem depois */
         .homer {
             display: none;
             position: absolute;
@@ -93,7 +90,6 @@
         }
 
 
-        /* Animação de Coração */
         .heart {
             position: absolute;
             width: 20px;
@@ -134,13 +130,10 @@
             }
         }
 
-        /* --- MEDIA QUERY PARA CELULAR (max-width: 600px) --- */
         @media (max-width: 600px) {
             h1 {
                 font-size: 22px;
             }
-
-            /* NOVO layout com Grid para sobreposição */
             .buttons {
                 position: static;
                 display: grid;
@@ -152,34 +145,32 @@
             }
 
             .btn {
-                position: static; /* Botões seguem a grade */
-                grid-column: 1; /* Todos na mesma coluna */
+                position: static; 
+                grid-column: 1; 
                 width: 80%;
                 max-width: 280px;
                 margin: 0;
             }
 
             .btn-yes1 {
-                grid-row: 1; /* Botão 1 na linha 1 */
+                grid-row: 1; 
             }
 
             .btn-yes2 {
-                grid-row: 2; /* Botão 2 na linha 2 */
+                grid-row: 2;
             }
 
             .btn-no {
-                grid-row: 2; /* Botão "Nem" também na linha 2, sobrepondo o anterior */
+                grid-row: 2; 
                 z-index: 2;
             }
             
-            /* Classe para quando o botão "Nem" for clicado e começar a se mover */
             .btn-no.moving {
-                position: absolute; /* Ao ser clicado, ele sai da grade para se mover livremente */
+                position: absolute; 
                 width: 120px;
                 z-index: 100;
             }
 
-            /* Ajuste de GIFs para telas pequenas */
             .kiss, .rotating, .finger, .teemo {
                 position: absolute;
             }
