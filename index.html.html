@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eai?</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            overflow: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* --- ESTILOS PARA DESKTOP --- */
+        .buttons {
+            position: relative;
+            width: 400px;
+            height: 100px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            position: absolute;
+            width: 180px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #555;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn-yes1 {
+            left: 0;
+            top: 0;
+        }
+
+        .btn-yes2 {
+            right: 0;
+            top: 0;
+        }
+        
+        .btn-no {
+            right: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        /* Estilos dos GIFs que aparecem depois */
+        .homer {
+            display: none;
+            position: absolute;
+        }
+
+        .finger {
+            width: 500px;
+            top: -200px;
+            left: 10px;
+        }
+        .kiss {
+            width: 300px;
+            top: 300px;
+            right: 200px;
+        }
+        .rotating {
+            width: 300px;
+            top: 300px;
+            left: 200px;
+        }
+        .teemo {
+            top: 0px;
+            right: 10px;
+        }
+
+
+        /* Animação de Coração */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(45deg);
+            animation: float 3s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) scale(0.5) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- MEDIA QUERY PARA CELULAR (max-width: 600px) --- */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            /* NOVO layout com Grid para sobreposição */
+            .buttons {
+                position: static;
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: center;
+                gap: 15px;
+                width: 100%;
+                height: auto;
+            }
+
+            .btn {
+                position: static; /* Botões seguem a grade */
+                grid-column: 1; /* Todos na mesma coluna */
+                width: 80%;
+                max-width: 280px;
+                margin: 0;
+            }
+
+            .btn-yes1 {
+                grid-row: 1; /* Botão 1 na linha 1 */
+            }
+
+            .btn-yes2 {
+                grid-row: 2; /* Botão 2 na linha 2 */
+            }
+
+            .btn-no {
+                grid-row: 2; /* Botão "Nem" também na linha 2, sobrepondo o anterior */
+                z-index: 2;
+            }
+            
+            /* Classe para quando o botão "Nem" for clicado e começar a se mover */
+            .btn-no.moving {
+                position: absolute; /* Ao ser clicado, ele sai da grade para se mover livremente */
+                width: 120px;
+                z-index: 100;
+            }
+
+            /* Ajuste de GIFs para telas pequenas */
+            .kiss, .rotating, .finger, .teemo {
+                position: absolute;
+            }
+            .kiss {
+                width: 120px; top: auto; bottom: 20px; right: 10px;
+            }
+            .rotating {
+                width: 120px; top: auto; bottom: 20px; left: 10px;
+            }
+            .finger {
+                width: 100%; top: -80px; left: 0;
+            }
+            .teemo {
+                width: 100px; top: 5px; right: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Cuzin hoje?</h1>
+
+        <img src="https://media1.giphy.com/media/5eG2802LIBdTfRvVMt/giphy.gif?cid=6c09b952c42o3plo6wxb7r91wl46y4380hjpfiegbe3t2g9u&ep=v1_stickers_search&rid=giphy.gif&ct=s" class="finger homer">
+        <img src="https://media.tenor.com/QYgJH_gyodgAAAAM/homer-simpson.gif" class="homer">
+        <img src="https://media.tenor.com/M2xKS1Ez6HIAAAAj/emoji-rotating.gif" class="homer rotating">
+        <img src="https://i.pinimg.com/originals/10/22/dd/1022dda8c81c2db8e25f9f8ba4a58f2d.gif" class="homer kiss">
+        <img src="https://i.makeagif.com/media/1-28-2015/8smdMW.gif" class="homer teemo">
+
+        <div class="buttons">
+            <button class="btn btn-yes1" id="yes1">Ja vou de chuca kkk</button>
+            <button class="btn btn-yes2" id="yes2">Claro rs</button>
+            <button class="btn btn-no" id="no">Nem</button>
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton1 = document.getElementById('yes1');
+        const yesButton2 = document.getElementById('yes2');
+        const title = document.querySelector('.title');
+        const homerGifs = document.querySelectorAll('.homer');
+
+        const colors = ['#FF69B4', '#FF1493', '#DB7093', '#C71585', '#8B0000'];
+        let colorIndex = 0;
+        let audio;
+        let aChoiceWasMade = false;
+
+        function playSuccessAnimation() {
+            if (aChoiceWasMade) return;
+            aChoiceWasMade = true;
+
+            try {
+                audio = new Audio('./love.mp3'); 
+                audio.play();
+            } catch (e) {
+                console.error("Erro ao tocar o áudio. Verifique o caminho do arquivo.", e);
+            }
+
+            title.style.display = 'none';
+            document.querySelector('.buttons').style.display = 'none';
+            homerGifs.forEach(gif => gif.style.display = 'block');
+
+            setInterval(() => {
+                document.body.style.backgroundColor = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }, 500);
+
+            setInterval(createHeart, 300);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * window.innerWidth}px`;
+            heart.style.top = `${window.innerHeight}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+
+        yesButton1.addEventListener('click', playSuccessAnimation);
+        yesButton2.addEventListener('click', playSuccessAnimation);
+
+        noButton.addEventListener('click', () => {
+            if (aChoiceWasMade) return;
+            
+            noButton.classList.add('moving');
+
+            const maxX = window.innerWidth - noButton.offsetWidth;
+            const maxY = window.innerHeight - noButton.offsetHeight;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+
+            noButton.style.left = `${newX}px`;
+            noButton.style.top = `${newY}px`;
+        });
+    </script>
+</body>
+</html>
